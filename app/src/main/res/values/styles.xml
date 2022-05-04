@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="android:background">#292929</item>
+        <item name="tabTextAppearance">@style/MineCustomTabText</item>
+        <item name="tabSelectedTextColor">#D0CBCB</item>
+        <item name="tabIndicatorColor">#B1B1B1</item>
+        <item name="tabTextColor">#B1B1B1</item>
+    </style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>

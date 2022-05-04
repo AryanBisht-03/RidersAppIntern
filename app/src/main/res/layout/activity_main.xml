@@ -26,6 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="Edvour"
                 android:textColor="#EFECEC"
                 android:textSize="24sp"
@@ -36,16 +38,15 @@
 
             <ImageView
                 android:id="@+id/profile_image"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="25dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_keyman"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_baseline_person"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textView2"
+                app:srcCompat="@drawable/ic_baseline_person" />
 
             <TextView
                 android:id="@+id/userName"
@@ -66,14 +67,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#292929"
         android:contentDescription="tabs"
         android:elevation="12dp"
+        style="@style/CustomTabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:tabSelectedTextColor="#D0CBCB"
-        app:tabTextColor="#B1B1B1" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
 
     <androidx.recyclerview.widget.RecyclerView
