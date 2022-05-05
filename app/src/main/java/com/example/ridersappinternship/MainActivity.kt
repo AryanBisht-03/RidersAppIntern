@@ -129,19 +129,19 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 if (tab.position == 0) {
                     binding!!.cardView.visibility = View.GONE
-                    Log.d("Aryan", "Selected 0 " + rides!!.size)
+
                     adapter = recycleAdapter(this@MainActivity, rides!!)
                     adapter!!.notifyDataSetChanged()
                     binding!!.recyclerView.adapter = adapter
                 } else if (tab.position == 1) {
                     binding!!.cardView.visibility = View.GONE
-                    Log.d("Aryan", "Selected 1 " + upcoming!!.size)
+
                     adapter = recycleAdapter(this@MainActivity, upcoming!!)
                     adapter!!.notifyDataSetChanged()
                     binding!!.recyclerView.adapter = adapter
                 } else if (tab.position == 2) {
                     binding!!.cardView.visibility = View.GONE
-                    Log.d("Aryan", "Selected 2 " + past!!.size)
+//                    Log.d("Aryan", "Selected 2 " + past!!.size)
                     adapter = recycleAdapter(this@MainActivity, past!!)
                     adapter!!.notifyDataSetChanged()
                     binding!!.recyclerView.adapter = adapter
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }) { error -> Log.d("Aryan", "Error is : - " + error.message) }
 
-//        user = new MainUser(25,"name", "url");
+
         val myUrl = "https://assessment.api.vweb.app/rides"
         mRequestQueue = Volley.newRequestQueue(this)
         val req = JsonArrayRequest(
@@ -193,18 +193,20 @@ class MainActivity : AppCompatActivity() {
                         val formatter = SimpleDateFormat("MM/dd/yyyy")
                         val rideDate = rides!![i].unformatDate
                         val str = formatter.format(date)
-                        Log.d("Aryan", "$str $rideDate")
                         val cond1 = str.substring(0, 2).compareTo(rideDate!!.substring(0, 2))
                         val cond2 = str.substring(3, 5).compareTo(rideDate!!.substring(3, 5))
-                        if (cond1 > 0 || cond1 == 0 && cond2 > 0) past!!.add(rides!![i]) else upcoming!!.add(
-                            rides!![i]
-                        )
+                        if (cond1 > 0 || cond1 == 0 && cond2 > 0)
+                            past!!.add(rides!![i])
+                        else
+                            upcoming!!.add(rides!![i])
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         rides!!.sortWith(Comparator { r1: RideModel, r2: RideModel ->
                             r1.distance!!.compareTo(r2.distance!!)
                         })
                     }
+                    binding!!.tabLayout.getTabAt(1)?.text = "UPCOMING ("+upcoming?.size+")"
+                    binding!!.tabLayout.getTabAt(2)?.text = "PAST ("+past?.size+")"
                     adapter!!.notifyDataSetChanged()
                 } catch (e: JSONException) {
                     Log.d("Aryan", "Some exception occurs")
